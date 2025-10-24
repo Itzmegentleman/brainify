@@ -28,6 +28,7 @@ p{font-size:1.1rem;color:#004d40;margin-bottom:40px;}
 .influence-text a:hover{text-decoration:underline;color:#009688;}
 footer{background:#004d40;color:#fff;text-align:center;padding:30px 0;margin-top:60px;font-size:0.95rem;}
 </style>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
 <header>
@@ -70,42 +71,50 @@ Your certificate is waiting — stand out today!
 
 <footer>© 2025 Brainify | Designed by G Manoj Kumar</footer>
 
-<!-- Razorpay Script -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
 <script>
-// Restrict pricing page if test not completed
+// Restrict direct access
 if(localStorage.getItem("testCompleted") !== "true") {
   alert("You need to complete the test first!");
   window.location.href = "test.html";
 }
 
-// Plan buttons
+// Razorpay setup
 const basicBtn = document.getElementById("basicPlan");
 const premiumBtn = document.getElementById("premiumPlan");
 
-basicBtn.onclick = () => {
-  const options = {
-    "key": "rzp_live_RXMLxj4sbz6Mok", // Replace with Razorpay Key ID
-    "amount": 29 * 100, // ₹39 in paise
-    "currency": "INR",
-    "name": "Brainify",
-    "description": "IQ Certificate - Basic Plan",
-    "handler": function (response){
-        alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
-        localStorage.setItem("selectedPlan", "basic");
-        window.location.href = "certificate.html";
+basicBtn.onclick = function() {
+  localStorage.setItem("selectedPlan", "basic");
+
+  const iq = localStorage.getItem("iqScore") || 25;
+  const name = localStorage.getItem("username") || "Participant";
+
+  var options = {
+    key: "rzp_live_RXMLxj4sbz6Mok", // 🔹 Replace with your Razorpay Key ID
+    amount: 2900, // ₹39
+    currency: "INR",
+    name: "Brainify IQ Test",
+    description: "Basic IQ Certificate Plan",
+    image: "https://your-logo-link-here.com/logo.png",
+    handler: function (response) {
+      // Payment success logic
+      localStorage.setItem("paymentSuccess", "true");
+      localStorage.setItem("testCompleted", "true");
+      localStorage.setItem("username", name);
+      localStorage.setItem("iqScore", iq);
+      alert("✅ Payment successful! Generating your certificate...");
+      window.location.href = "certificate.html";
     },
-    "theme": {"color": "#00bfa6"}
+    theme: {
+      color: "#00bfa6"
+    }
   };
-  const rzp1 = new Razorpay(options);
+  var rzp1 = new Razorpay(options);
   rzp1.open();
 };
 
-premiumBtn.onclick = () => {
-  alert("Premium Plan is coming soon! Please proceed with Basic Plan for now.");
+premiumBtn.onclick = function() {
+  alert("💎 Premium Plan is still being prepared! Please proceed with the Basic Plan for now.");
 };
 </script>
-
 </body>
 </html>
