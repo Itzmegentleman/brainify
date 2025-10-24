@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Brainify | Pricing</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 body{background:linear-gradient(to right,#00bfa6,#e0f7f5);color:#003f38;overflow-x:hidden;}
@@ -49,7 +48,7 @@ footer{background:#004d40;color:#fff;text-align:center;padding:30px 0;margin-top
   <div class="card">
     <h3>Basic</h3>
     <p>Perfect for first-time testers. Access your official IQ score and downloadable certificate.</p>
-    <div class="price">₹39</div>
+    <div class="price">₹29</div>
     <button id="basicPlan">Get Certificate</button>
   </div>
   <div class="card">
@@ -71,6 +70,9 @@ Your certificate is waiting — stand out today!
 
 <footer>© 2025 Brainify | Designed by G Manoj Kumar</footer>
 
+<!-- Razorpay Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <script>
 // Restrict pricing page if test not completed
 if(localStorage.getItem("testCompleted") !== "true") {
@@ -83,35 +85,27 @@ const basicBtn = document.getElementById("basicPlan");
 const premiumBtn = document.getElementById("premiumPlan");
 
 basicBtn.onclick = () => {
-  // Razorpay payment integration
   const options = {
-    key: "YOUR_RAZORPAY_KEY", // Replace with your Razorpay Key
-    amount: 39 * 100, // ₹39 in paise
-    currency: "INR",
-    name: "Brainify",
-    description: "IQ Certificate - Basic Plan",
-    handler: function(response){
-      // Payment successful
-      localStorage.setItem("selectedPlan", "basic");
-      localStorage.setItem("paymentSuccess", "true");
-      alert("Payment Successful! Redirecting to your certificate...");
-      window.location.href = "certificate.html";
+    "key": "rzp_live_RXMLxj4sbz6Mok", // Replace with Razorpay Key ID
+    "amount": 29 * 100, // ₹39 in paise
+    "currency": "INR",
+    "name": "Brainify",
+    "description": "IQ Certificate - Basic Plan",
+    "handler": function (response){
+        alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+        localStorage.setItem("selectedPlan", "basic");
+        window.location.href = "certificate.html";
     },
-    prefill: {
-      name: localStorage.getItem("username") || "Participant",
-      email: ""
-    },
-    theme: {
-      color: "#00bfa6"
-    }
+    "theme": {"color": "#00bfa6"}
   };
-  const rzp = new Razorpay(options);
-  rzp.open();
+  const rzp1 = new Razorpay(options);
+  rzp1.open();
 };
 
 premiumBtn.onclick = () => {
   alert("Premium Plan is coming soon! Please proceed with Basic Plan for now.");
 };
 </script>
+
 </body>
 </html>
