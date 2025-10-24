@@ -21,25 +21,9 @@ main{padding:160px 40px 60px;display:flex;justify-content:center;align-items:fle
 .certificate-preview .iq-score{font-size:3rem;font-weight:700;color:#00bfa6;margin:20px 0;}
 .certificate-preview .plan{font-weight:600;font-size:1.1rem;color:#009688;margin-bottom:20px;}
 .certificate-preview .tagline{font-weight:700;font-size:1.3rem;color:#ff5722;margin-top:15px;}
-.certificate-preview .signature {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px; /* spacing above signature */
-}
-.certificate-preview .signature img {
-  width: 200px; /* adjust size of signature image */
-  height: auto;
-  display: block;
-  margin-bottom: 5px; /* space between image and text */
-}
-.certificate-preview .signature span {
-  font-weight: 600;
-  font-size: 1rem;
-  color: #004d40;
-  text-align: center;
-}
-
+.certificate-preview .signature {display:flex;flex-direction:column;align-items:center;margin-top:20px;}
+.certificate-preview .signature img {width:200px;height:auto;display:block;margin-bottom:5px;}
+.certificate-preview .signature span {font-weight:600;font-size:1rem;color:#004d40;text-align:center;}
 .text-content{flex:1 1 400px;max-width:500px;display:flex;flex-direction:column;justify-content:center;}
 .text-content h2{font-size:2.5rem;color:#004d40;margin-bottom:20px;text-align:left;}
 .text-content p.description{font-size:1.2rem;color:#00695c;margin-bottom:30px;text-align:left;}
@@ -66,7 +50,6 @@ footer{background:#004d40;color:#fff;text-align:center;padding:30px 0;margin-top
   <nav>
     <a href="index.html">Home</a>
     <a href="test.html">Take Test</a>
-   
     <a href="certificate.html">Certificate</a>
     <a href="contact.html">Contact</a>
   </nav>
@@ -82,19 +65,16 @@ footer{background:#004d40;color:#fff;text-align:center;padding:30px 0;margin-top
       <div class="iq-score" id="iqScore">---</div>
       <div class="plan" id="planType"></div>
       <div class="tagline" id="tagline"></div>
-
       <div class="signature">
-        
         <span>Authorized by Brainify</span>
       </div>
-
     </div>
   </div>
 
   <div class="text-content">
     <h2>Your Official Brainify IQ Certificate</h2>
     <p class="description">This certificate reflects your cognitive skills, reasoning ability, and decision-making performance. Enjoy viewing your results!</p>
-    <button class="download-btn" onclick="alert('🎓 Preview certificate only, not downloadable!')">Download Certificate</button>
+    <button class="download-btn">Download Certificate</button>
     <button class="cta-btn" onclick="window.location.href='test.html'">Take Test</button>
     <div class="influence-text">
       <p>Join thousands of achievers certified by Brainify. 
@@ -113,6 +93,10 @@ footer{background:#004d40;color:#fff;text-align:center;padding:30px 0;margin-top
 </section>
 
 <footer>© 2025 Brainify | Designed by G Manoj Kumar</footer>
+
+<!-- Include html2canvas and jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
 // Check if redirected after payment
@@ -171,9 +155,24 @@ if(isPaid){
     document.getElementById("advice").innerHTML=`<strong>Advice:</strong> ${advice}`;
     document.getElementById("motivation").textContent=motivation;
 }
+
+// Download certificate as PDF
+document.querySelector(".download-btn").addEventListener("click", () => {
+    const certificate = document.getElementById("certificate");
+    html2canvas(certificate, { scale: 2 }).then(canvas => {
+        const imgData = canvas.toDataURL("image/png");
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF({
+            orientation: "landscape",
+            unit: "px",
+            format: [canvas.width, canvas.height]
+        });
+        pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+        pdf.save(`${name}_Brainify_Certificate.pdf`);
+    });
+});
 </script>
 
 </body>
 </html>
-
 
