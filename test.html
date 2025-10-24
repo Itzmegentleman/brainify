@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brainify | Take Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:linear-gradient(to right,#00bfa6,#e0f7f5);color:#003f38;overflow-x:hidden;}
+header{width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 60px;background:rgba(255,255,255,0.8);backdrop-filter:blur(8px);position:fixed;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+header h1{font-size:1.8em;font-weight:700;color:#004d40;}
+nav a{margin-left:30px;text-decoration:none;color:#004d40;font-weight:600;transition:0.3s;}
+nav a:hover{color:#009688;}
+main{padding:140px 60px;text-align:center;}
+h2{font-size:2.5rem;color:#004d40;margin-bottom:20px;}
+p{font-size:1.1rem;color:#004d40;margin-bottom:30px;}
+.test-details{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;margin-bottom:40px;}
+.detail-box{background:#fff;padding:20px 30px;border-radius:20px;box-shadow:0 6px 15px rgba(0,0,0,0.1);flex:1 1 200px;min-width:200px;}
+.detail-box h3{color:#004d40;font-size:1.3rem;margin-bottom:10px;}
+.detail-box p{color:#00695c;font-size:1rem;}
+.start-btn{padding:14px 50px;font-size:1.2rem;border:none;border-radius:50px;background:#00bfa6;color:#fff;font-weight:600;cursor:pointer;transition:0.3s;margin-bottom:40px;}
+.start-btn:hover{background:#009688;transform:scale(1.05);}
+.instructions{background:#e0f7f5;padding:25px 30px;border-radius:20px;box-shadow:0 6px 15px rgba(0,0,0,0.1);max-width:600px;margin:0 auto;margin-bottom:40px;}
+.instructions h3{color:#004d40;margin-bottom:10px;}
+.instructions p{color:#00695c;}
+.tips{font-size:1rem;color:#004d40;}
+.tips a{color:#009688;text-decoration:none;font-weight:600;}
+.tips a:hover{text-decoration:underline;}
+footer{background:#004d40;color:#fff;text-align:center;padding:30px 0;margin-top:60px;font-size:0.95rem;}
+</style>
+</head>
+<body>
+<header>
+<h1>Brainify</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="test.html">Take Test</a>
+
+<a href="certificate.html">Certificate</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<main>
+<h2>Take the IQ Test</h2>
+<p>Test your intelligence and get certified instantly. Are you ready to know your true IQ?</p>
+
+<div class="test-details">
+  <div class="detail-box">
+    <h3>⏱ Time</h3>
+    <p>15 minutes to complete 30 questions</p>
+  </div>
+  <div class="detail-box">
+    <h3>💰 Price</h3>
+    <p>Just ₹35 for your official IQ certificate</p>
+  </div>
+  <div class="detail-box">
+    <h3>🧠 Focus Areas</h3>
+    <p>Logic, reasoning, creativity, and problem solving</p>
+  </div>
+</div>
+
+<button class="start-btn" onclick="window.location.href='start-test.html'">Start Test Now</button>
+
+<div class="instructions">
+<h3>Instructions:</h3>
+<p>Read carefully before starting the test to get the best results. Ensure you have a stable internet connection and focus on each question.</p>
+</div>
+
+<div class="tips">
+<p>Pro Tip: Prepare your mindset for a challenge and <a href="pricing.html">choose the best plan</a> to get certified instantly. Want to share your results? <a href="certificate.html">Learn about certificates</a>.</p>
+</div>
+</main>
+
+<footer>© 2025 Brainify | Designed by G Manoj Kumar</footer>
+</body>
+</html>

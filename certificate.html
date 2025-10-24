@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brainify | Certificate</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:linear-gradient(to right,#f0f8f7,#e0f7f5);color:#003f38;overflow-x:hidden;}
+header{width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 60px;background:rgba(255,255,255,0.9);backdrop-filter:blur(8px);position:fixed;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+header h1{font-size:1.8em;font-weight:700;color:#004d40;}
+nav a{margin-left:30px;text-decoration:none;color:#004d40;font-weight:600;transition:0.3s;}
+nav a:hover{color:#009688;}
+main{padding:160px 40px 60px;display:flex;justify-content:center;align-items:flex-start;gap:60px;flex-wrap:wrap;}
+.certificate-card{flex:1 1 400px;max-width:520px;background:#fff;border-radius:20px;padding:20px;box-shadow:0 12px 30px rgba(0,0,0,0.2);transition:transform 0.3s,box-shadow 0.3s;}
+.certificate-card:hover{transform:scale(1.02);box-shadow:0 20px 40px rgba(0,0,0,0.25);}
+.certificate-preview{width:100%;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,0.2);padding:30px;text-align:center;background:linear-gradient(to bottom,#fff,#f0fdfb);border:3px solid #00bfa6;}
+.certificate-preview h3{color:#004d40;font-size:1.5rem;margin-bottom:10px;}
+.certificate-preview p{color:#00695c;font-size:1rem;margin-bottom:10px;}
+.certificate-preview .iq-score{font-size:3rem;font-weight:700;color:#00bfa6;margin:20px 0;}
+.certificate-preview .plan{font-weight:600;font-size:1.1rem;color:#009688;margin-bottom:20px;}
+.certificate-preview .tagline{font-weight:700;font-size:1.3rem;color:#ff5722;margin-top:15px;}
+.certificate-preview .signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px; /* spacing above signature */
+}
+.certificate-preview .signature img {
+  width: 200px; /* adjust size of signature image */
+  height: auto;
+  display: block;
+  margin-bottom: 5px; /* space between image and text */
+}
+.certificate-preview .signature span {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #004d40;
+  text-align: center;
+}
+
+.text-content{flex:1 1 400px;max-width:500px;display:flex;flex-direction:column;justify-content:center;}
+.text-content h2{font-size:2.5rem;color:#004d40;margin-bottom:20px;text-align:left;}
+.text-content p.description{font-size:1.2rem;color:#00695c;margin-bottom:30px;text-align:left;}
+.cta-btn,.download-btn{padding:16px 50px;font-size:1.1rem;border:none;border-radius:50px;color:#fff;font-weight:600;cursor:pointer;transition:0.3s;margin-bottom:20px;align-self:flex-start;}
+.cta-btn{background:#00bfa6;}
+.cta-btn:hover{background:#009688;transform:scale(1.05);}
+.download-btn{background:#009688;}
+.download-btn:hover{background:#00796b;transform:scale(1.05);}
+.influence-text{margin-top:20px;font-size:1rem;color:#004d40;text-align:left;}
+.influence-text a{color:#00bfa6;font-weight:600;text-decoration:none;margin:0 10px;}
+.influence-text a:hover{text-decoration:underline;color:#009688;}
+.advice-section{margin-top:40px;background:#fff;border-radius:15px;padding:25px;box-shadow:0 6px 18px rgba(0,0,0,0.1);}
+.advice-section h3{color:#004d40;font-size:1.5rem;margin-bottom:15px;}
+.advice-section p{color:#00695c;font-size:1rem;margin-bottom:10px;}
+.motivation{margin-top:30px;font-size:1.2rem;font-weight:600;color:#004d40;text-align:center;line-height:1.6;}
+footer{background:#004d40;color:#fff;text-align:center;padding:30px 0;margin-top:60px;font-size:0.95rem;}
+@media(max-width:900px){main{flex-direction:column;align-items:center;gap:40px;padding:180px 20px 40px;}.text-content h2,.text-content p.description,.influence-text{text-align:center;}.cta-btn,.download-btn{align-self:center;}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Brainify</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="test.html">Take Test</a>
+   
+    <a href="certificate.html">Certificate</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <div class="certificate-card">
+    <div class="certificate-preview" id="certificate">
+      <h3>Certificate of Intelligence</h3>
+      <p>This is proudly presented to</p>
+      <h3 id="username">Participant</h3>
+      <p>for achieving an exceptional IQ score of</p>
+      <div class="iq-score" id="iqScore">---</div>
+      <div class="plan" id="planType"></div>
+      <div class="tagline" id="tagline"></div>
+
+      <div class="signature">
+        <img src="assets/sign.png" alt="Signature">
+        <span>Authorized by Brainify</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="text-content">
+    <h2>Your Official Brainify IQ Certificate</h2>
+    <p class="description">This certificate reflects your cognitive skills, reasoning ability, and decision-making performance. Enjoy viewing your results!</p>
+    <button class="download-btn" onclick="alert('🎓 Preview certificate only, not downloadable!')">Download Certificate</button>
+    <button class="cta-btn" onclick="window.location.href='test.html'">Take Test</button>
+    <div class="influence-text">
+      <p>Join thousands of achievers certified by Brainify. 
+      <a href="pricing.html">Upgrade Plan</a> | 
+      <a href="contact.html">Get Support</a></p>
+    </div>
+  </div>
+</main>
+
+<section class="advice-section" id="adviceSection">
+  <h3>Your Personalized Insights</h3>
+  <p id="pros">Pros: -</p>
+  <p id="cons">Areas to Improve: -</p>
+  <p id="advice">Advice: -</p>
+  <div class="motivation" id="motivation"></div>
+</section>
+
+<footer>© 2025 Brainify | Designed by G Manoj Kumar</footer>
+
+<script>
+// Check if redirected after payment
+const isPaid = localStorage.getItem("paymentSuccess") === "true";
+
+let iq = 0, plan = "Basic", name = "Participant";
+
+if(isPaid){
+    iq = localStorage.getItem("iqScore") || 0;
+    plan = localStorage.getItem("selectedPlan") || "Basic";
+    name = localStorage.getItem("username") || "Participant";
+}
+
+// Scale IQ
+const iqScaled = Math.round((iq*5)+80);
+document.getElementById("username").textContent = name;
+document.getElementById("iqScore").textContent = isPaid ? iqScaled : "---";
+document.getElementById("planType").textContent = isPaid ? (plan === "premium" ? "Premium Certificate" : "Basic Certificate") : "Preview Certificate";
+
+// Tagline
+let tagline = "";
+if(isPaid){
+    if(iqScaled>=140) tagline = "🧠 The Visionary Mind";
+    else if(iqScaled>=120) tagline = "⚡ The Quick Thinker";
+    else if(iqScaled>=100) tagline = "🎯 The Analytical Achiever";
+    else tagline = "🌱 The Learning Explorer";
+}
+document.getElementById("tagline").textContent = tagline;
+
+// Advice section
+if(isPaid){
+    let pros="", cons="", advice="", motivation="";
+    if(iqScaled>=140){
+        pros="Your mind excels at abstract reasoning, fast pattern recognition, and advanced problem solving.";
+        cons="Occasionally, overanalyzing can slow decision-making—trust your instincts more often.";
+        advice="Engage in teaching or mentoring — it sharpens your understanding while inspiring others.";
+        motivation="“Great minds don’t just think fast; they think deep.”";
+    } else if(iqScaled>=120){
+        pros="You demonstrate excellent logic, creativity, and the ability to connect ideas quickly.";
+        cons="You may rush through details—balance speed with precision for mastery.";
+        advice="Practice mindfulness and puzzles that require sustained focus, like chess or coding challenges.";
+        motivation="“Your speed is your strength — aim it at the right direction.”";
+    } else if(iqScaled>=100){
+        pros="Strong reasoning and comprehension abilities—consistent and balanced thinking.";
+        cons="You might need more complex challenges to unlock your hidden potential.";
+        advice="Try new skills weekly — push your brain beyond comfort through strategy games or memory exercises.";
+        motivation="“Every challenge you face is another neuron growing stronger.”";
+    } else {
+        pros="You have a foundation of logical understanding and adaptability that’s ready to grow.";
+        cons="Your focus and analytical depth can improve with consistent brain training.";
+        advice="Start with simple logic games, increase reading, and learn something new daily.";
+        motivation="“Growth begins when you believe your mind can evolve.”";
+    }
+    document.getElementById("pros").innerHTML=`<strong>Pros:</strong> ${pros}`;
+    document.getElementById("cons").innerHTML=`<strong>Areas to Improve:</strong> ${cons}`;
+    document.getElementById("advice").innerHTML=`<strong>Advice:</strong> ${advice}`;
+    document.getElementById("motivation").textContent=motivation;
+}
+</script>
+
+</body>
+</html>

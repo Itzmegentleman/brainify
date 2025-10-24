@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brainify | Contact</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body {
+  background: linear-gradient(to right,#00bfa6,#e0f7f5);
+  color:#003f38;
+  overflow-x:hidden;
+}
+
+header {
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 60px;
+  background:rgba(255,255,255,0.9);
+  backdrop-filter:blur(8px);
+  position:fixed;
+  top:0;
+  z-index:100;
+  box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size:1.8em;
+  font-weight:700;
+  color:#004d40;
+}
+
+nav a {
+  margin-left:30px;
+  text-decoration:none;
+  color:#004d40;
+  font-weight:600;
+  transition:0.3s;
+}
+
+nav a:hover {
+  color:#009688;
+}
+
+main {
+  padding:160px 40px 60px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  gap:60px;
+  flex-wrap:wrap;
+}
+
+.support-text {
+  flex:1 1 400px;
+  max-width:500px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:left;
+}
+
+.support-text h2 {
+  font-size:2.5rem;
+  color:#000;
+  margin-bottom:20px;
+}
+
+.support-text p {
+  font-size:1.2rem;
+  color:#000;
+  margin-bottom:20px;
+}
+
+.support-links a {
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  margin-right:15px;
+  background:#fff;
+  padding:5px 12px;
+  border-radius:10px;
+  transition:0.3s;
+}
+
+.support-links a:hover {
+  text-decoration:none;
+  color:#00bfa6;
+  background: rgba(255,255,255,0.2);
+}
+
+.contact-form {
+  flex:1 1 400px;
+  max-width:500px;
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-form:hover {
+  transform:scale(1.02);
+  box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+.contact-form input, .contact-form textarea {
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  outline:none;
+  font-size:15px;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+  border-color:#00bfa6;
+}
+
+.contact-form button {
+  padding:16px 50px;
+  font-size:1.1rem;
+  border:none;
+  border-radius:50px;
+  background:#00bfa6;
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.contact-form button:hover {
+  background:#009688;
+  transform:scale(1.05);
+}
+
+footer {
+  background:#004d40;
+  color:#fff;
+  text-align:center;
+  padding:30px 0;
+  margin-top:60px;
+  font-size:0.95rem;
+}
+
+@media(max-width:900px) {
+  main {
+    flex-direction:column-reverse;
+    align-items:center;
+    gap:40px;
+    padding:180px 20px 40px;
+  }
+  .support-text, .contact-form {
+    max-width:100%;
+    text-align:center;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Brainify</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="test.html">Take Test</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="certificate.html">Certificate</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <div class="support-text">
+    <h2>Get in Touch</h2>
+    <p>Have questions or need assistance? Our friendly support team is ready to help you with your IQ test journey. Don’t hesitate to reach out!</p>
+    <div class="support-links">
+      <a href="test.html">Start Your Test</a> |
+      <a href="index.html">Home</a> |
+      <a href="certificate.html">See Certificate</a>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <form action="mailto:info@brainify.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</main>
+
+<footer>© 2025 Brainify | Designed by G Manoj Kumar</footer>
+
+</body>
+</html>

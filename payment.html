@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brainify | Payment</title>
+</head>
+<body>
+<h2>Complete Payment</h2>
+<p>Plan: <span id="planType"></span></p>
+<button id="rzp-button">Pay Now</button>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+const plan = localStorage.getItem("selectedPlan") || "Basic";
+document.getElementById("planType").textContent = plan;
+
+// Set amount based on plan
+let amount = plan === "premium" ? 39900 : 19900; // in paise
+
+document.getElementById('rzp-button').onclick = function(e){
+    var options = {
+        "key": "YOUR_RAZORPAY_KEY", // Replace with your Razorpay key
+        "amount": amount, // in paise
+        "currency": "INR",
+        "name": "Brainify",
+        "description": plan + " Certificate",
+        "handler": function (response){
+            // Payment successful
+            localStorage.setItem("paymentSuccess","true");
+            window.location.href = "certificate.html";
+        },
+        "theme": {
+            "color": "#00bfa6"
+        }
+    };
+    var rzp = new Razorpay(options);
+    rzp.open();
+    e.preventDefault();
+}
+</script>
+</body>
+</html>

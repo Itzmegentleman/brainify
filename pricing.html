@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brainify | Pricing</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:linear-gradient(to right,#00bfa6,#e0f7f5);color:#003f38;overflow-x:hidden;}
+header{width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 60px;background:rgba(255,255,255,0.8);backdrop-filter:blur(8px);position:fixed;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.1);}
+header h1{font-size:1.8em;font-weight:700;color:#004d40;}
+nav a{margin-left:30px;text-decoration:none;color:#004d40;font-weight:600;transition:0.3s;}
+nav a:hover{color:#009688;}
+main{padding:140px 60px;text-align:center;}
+h2{font-size:2.5rem;color:#004d40;margin-bottom:20px;}
+p{font-size:1.1rem;color:#004d40;margin-bottom:40px;}
+.pricing-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;margin-top:20px;}
+.card{background:#fff;border-radius:20px;padding:30px;box-shadow:0 6px 15px rgba(0,0,0,0.1);transition:0.3s;}
+.card:hover{transform:translateY(-10px);box-shadow:0 10px 20px rgba(0,0,0,0.2);}
+.card h3{font-size:1.5rem;color:#004d40;margin-bottom:15px;}
+.card p{font-size:1rem;color:#00695c;margin-bottom:20px;}
+.card .price{font-size:2rem;font-weight:700;color:#00bfa6;margin-bottom:20px;}
+.card button{padding:12px 30px;border:none;border-radius:50px;background:#00bfa6;color:#fff;font-weight:600;cursor:pointer;transition:0.3s;}
+.card button:hover{background:#009688;transform:scale(1.05);}
+.influence-text{margin-top:40px;font-size:1rem;color:#004d40;}
+.influence-text a{color:#00bfa6;font-weight:600;text-decoration:none;margin-left:10px;margin-right:10px;}
+.influence-text a:hover{text-decoration:underline;color:#009688;}
+footer{background:#004d40;color:#fff;text-align:center;padding:30px 0;margin-top:60px;font-size:0.95rem;}
+</style>
+</head>
+<body>
+<header>
+<h1>Brainify</h1>
+<nav>
+<a href="index.html">Home</a>
+<a href="test.html">Take Test</a>
+<a href="certificate.html">Certificate</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<main>
+<h2>Choose Your Certificate Plan</h2>
+<p>Select the perfect plan and unlock your verified IQ certificate instantly!</p>
+
+<div class="pricing-cards">
+  <div class="card">
+    <h3>Basic</h3>
+    <p>Perfect for first-time testers. Access your official IQ score and downloadable certificate.</p>
+    <div class="price">₹39</div>
+    <button id="basicPlan">Get Certificate</button>
+  </div>
+  <div class="card">
+    <h3>Premium</h3>
+    <p>Get a premium certificate with gold design and a detailed IQ performance report.</p>
+    <div class="price">₹99</div>
+    <button id="premiumPlan">Get Certificate</button>
+  </div>
+</div>
+
+<div class="influence-text">
+<p>Thousands of achievers are already certified by Brainify. <br>
+Your certificate is waiting — stand out today!  
+<a href="test.html">Take Test</a> | 
+<a href="contact.html">Contact Us</a></p>
+</div>
+
+</main>
+
+<footer>© 2025 Brainify | Designed by G Manoj Kumar</footer>
+
+<script>
+// Restrict pricing page if test not completed
+if(localStorage.getItem("testCompleted") !== "true") {
+  alert("You need to complete the test first!");
+  window.location.href = "test.html";
+}
+
+// Plan buttons
+const basicBtn = document.getElementById("basicPlan");
+const premiumBtn = document.getElementById("premiumPlan");
+
+basicBtn.onclick = () => {
+  // Razorpay payment integration
+  const options = {
+    key: "YOUR_RAZORPAY_KEY", // Replace with your Razorpay Key
+    amount: 39 * 100, // ₹39 in paise
+    currency: "INR",
+    name: "Brainify",
+    description: "IQ Certificate - Basic Plan",
+    handler: function(response){
+      // Payment successful
+      localStorage.setItem("selectedPlan", "basic");
+      localStorage.setItem("paymentSuccess", "true");
+      alert("Payment Successful! Redirecting to your certificate...");
+      window.location.href = "certificate.html";
+    },
+    prefill: {
+      name: localStorage.getItem("username") || "Participant",
+      email: ""
+    },
+    theme: {
+      color: "#00bfa6"
+    }
+  };
+  const rzp = new Razorpay(options);
+  rzp.open();
+};
+
+premiumBtn.onclick = () => {
+  alert("Premium Plan is coming soon! Please proceed with Basic Plan for now.");
+};
+</script>
+</body>
+</html>
